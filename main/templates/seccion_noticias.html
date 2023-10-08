@@ -1,0 +1,51 @@
+<section id="noticias" class="container-fluid  text-center py-4   mt-4 bg-light">
+    <h1 class="display-5 fw-bold lh-1 mb-3 py-4">Noticias</h1>
+    <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+            
+
+            <!--{% for noticia in noticias %}
+            <div class="carousel-item {% if forloop.first %}active{% endif %}">-->
+              <div class="carousel-item">
+              <div class="container col-xxl-8">
+                <div class="row flex-lg-row-reverse align-items-center">
+                  <div class="col-10 col-sm-8 col-lg-6">
+                    <!--{% if noticia.images_set.first %}
+                      <img src="{{ noticia.images_set.first.image.url }}" class="img-fluid" alt="Bootstrap Themes" width="700" height="500">
+                    {% endif %}-->
+                    <!--
+                    {% for img in noticia.images_set.all %}
+                        {% if not forloop.first %}
+                            <img src="{{ img.image.url }}" class="img-fluid" alt="Bootstrap Themes" width="700" height="500">
+                        {% endif %}
+                    {% endfor %}-->
+                  </div>
+                  <div class="col-lg-6">
+                    <h1 class="display-5 fw-bold lh-1 mb-3">titulo noticia</h1>
+                    <p class="lead">Diseña y personaliza rápidamente sitios utilizando preconstruidos y potentes complementos de JavaScript.</p>
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+                      <a class="btn btn-primary btn-lg px-4 me-md-2" >Leer más..</a>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <!--{% endfor %}-->
+          
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+</section>
