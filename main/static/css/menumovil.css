@@ -1,0 +1,94 @@
+/* Styles for the hamburger button */
+.btn-hamburger {
+    background-color: transparent;
+    border: none;
+    font-size: 24px;
+}
+
+/* Hide hamburger button by default */
+.btn-hamburger {
+    display: none;
+}
+
+/* On mobile devices */
+@media (max-width: 768px) {
+    /* Show hamburger button and hide login button */
+    .btn-hamburger {
+        display: block;
+    }
+    .btn-primary {
+        display: none;
+    }
+}
+
+/* Styles for the dropdown menu on mobile devices */
+#hamburger-dropdown {
+    width: 100vw;  /* Make it occupy the full viewport width */
+    position: fixed; /* Make it fixed to appear over other content */
+    top: var(--menu-height, 80px);  /* Position it below the navbar */
+    left: 0;
+    opacity: 0;  /* Hide it by default */
+    pointer-events: none;  /* Ensure it doesn't block other elements */
+    transition: opacity 0.5s, transform 0.5s;  /* Smooth transition for opening and closing */
+    transform: translateY(-20px);  /* Start slightly above its final position */
+    background-color: #fff;  /* White background color */
+    z-index: 1000;  /* Ensure it appears on top of other content */
+    border: none;
+}
+
+/* Styles for when the dropdown is active (opened) */
+#hamburger-dropdown.active {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+/* Styles for submenu inside hamburger menu */
+/* Styles for submenu inside hamburger menu */
+.submenu {
+    display: none;
+    flex-direction: column;
+    position: relative;
+    top: 100%;  /* Aligns the submenu right below the parent item */
+    left: 0;
+    border: 1px solid #ccc;
+    width: 100%;
+    z-index: 10;  /* Ensure submenu is above other items */
+    background-color: transparent; /* Esto hace que el fondo blanco sea ligeramente transparente. */
+    border: none;
+}
+
+.submenu-parent {
+    position: relative;  /* Set as the reference point for the submenu */
+}
+
+.submenu-parent:hover .submenu {
+    display: flex;
+}
+
+.submenu .dropdown-item {
+    white-space: nowrap;
+}
+
+/* Additional styles to differentiate submenu items */
+.submenu .dropdown-item {
+    padding-left: 1.5rem;
+}
+.submenu .dropdown-item:hover {
+    color: #FF5733; /* Cambia a cualquier color que prefieras. En este caso, es un tono naranja. */
+
+}
+#hamburger-dropdown .dropdown-item:active {
+    background-color: transparent !important; 
+    color: inherit !important;  /* Esto debería mantener el color del texto sin cambios */
+    outline: none !important;
+}
+
+.submenu-parent > a {
+    display: block;
+    width: 100%;
+    position: relative;
+}
+
+
+

@@ -1,27 +1,33 @@
 document.addEventListener('DOMContentLoaded', function () {
-    var navbar = document.querySelector('.navbar');
-    var megaMenu = document.querySelector('.mega-menu');
-    var navbarItem = document.querySelector('.nav-item.colegio');
-    var isMouseOnNavbarItem = false;
-    var isMouseOnMegaMenu = false;
+    const navbar = document.querySelector('.navbar');
+    const megaMenu = document.querySelector('.mega-menu');
+    const navbarItem = document.querySelector('.nav-item.colegio');
 
-    // Obtain the height of the navbar and adjust the value of 'top' for the mega menu
-    var navbarHeight = navbar.offsetHeight;
-    megaMenu.style.top = navbarHeight + 'px';
-    
+    // Check if the elements exist before proceeding
+    if (!navbar || !megaMenu || !navbarItem) return;
+
+    let isMouseOnNavbarItem = false;
+    let isMouseOnMegaMenu = false;
+
+    const navbarHeight = navbar.offsetHeight;
+    megaMenu.style.top = `${navbarHeight}px`;
+
+    const toggleMegaMenu = (show) => {
+        megaMenu.style.display = show ? 'flex' : 'none';
+    };
 
     navbarItem.addEventListener('mouseenter', function () {
         isMouseOnNavbarItem = true;
-        megaMenu.style.display = 'flex';  // Show the menu when the mouse enters the navbar item
+        toggleMegaMenu(true);
     });
 
     navbarItem.addEventListener('mouseleave', function () {
         isMouseOnNavbarItem = false;
         setTimeout(function() {
             if (!isMouseOnMegaMenu) {
-                megaMenu.style.display = 'none';  // Hide the menu if the mouse is not on the mega menu
+                toggleMegaMenu(false);
             }
-        }, 100);  // Slight delay to check for mouse on mega menu
+        }, 100);
     });
 
     megaMenu.addEventListener('mouseenter', function () {
@@ -32,14 +38,44 @@ document.addEventListener('DOMContentLoaded', function () {
         isMouseOnMegaMenu = false;
         setTimeout(function() {
             if (!isMouseOnNavbarItem) {
-                megaMenu.style.display = 'none';  // Hide the menu if the mouse is not back on the navbar item
+                toggleMegaMenu(false);
             }
-        }, 100);  // Slight delay to check for mouse back on navbar item
+        }, 100);
     });
 
+    const hamburgerBtn = document.getElementById("hamburger-btn");
+    const dropdown = document.getElementById("hamburger-dropdown");
 
-   
-   
+    // Check if the elements exist before proceeding
+    if (hamburgerBtn && dropdown) {
+        hamburgerBtn.addEventListener("click", function() {
+            dropdown.classList.toggle("active");
+        });
+    }
+
+    const submenuParents = document.querySelectorAll('.submenu-parent');
+
+    submenuParents.forEach(parent => {
+        parent.addEventListener('click', function(event) {
+            const submenu = parent.querySelector('.submenu');
+            if (submenu.style.display === 'flex') {
+                submenu.style.display = 'none';
+            } else {
+                submenu.style.display = 'flex';
+            }
+            event.stopPropagation();  // prevent event from bubbling up
+        });
+    });
+
+    // Close all submenus if user clicks outside
+    document.addEventListener('click', function() {
+        const allSubmenus = document.querySelectorAll('.submenu');
+        allSubmenus.forEach(submenu => {
+            submenu.style.display = 'none';
+        });
+    });
+
+    
+    
+
 });
-
-

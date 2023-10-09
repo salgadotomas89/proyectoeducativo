@@ -104,27 +104,8 @@
 }
 
 
-/* Styles for the hamburger button */
-.btn-hamburger {
-    background-color: transparent;
-    border: none;
-    font-size: 24px;
-}
 
-/* Hide hamburger button by default */
-.btn-hamburger {
-    display: none;
-}
 
-/* On mobile devices */
-@media (max-width: 768px) {
-    /* Show hamburger button and hide login button */
-    .btn-hamburger {
-        display: block;
-    }
-    .btn-primary {
-        display: none;
-    }
-}
+
 
 
